@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.app</groupId>
+  <artifactId>bacterial-life-maven</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>bacterial-life-maven</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <!--Identidad del plugin
+        -> groupId: de dónde viene el plugin
+        -> artifactId: nombre exacto de la herramienta a utilizar
+        -> versión: versión específica -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.7.1</version>
+        <!--Configuración del plugin-->
+        <configuration>
+          <!--Plantillas predefinidas-->
+          <descriptorRefs>
+            <descriptorRef>
+              <!--Plantilla seleccionada -> Busca todas las librerías de dependencies y mezclarlo con src   -->
+              jar-with-dependencies
+            </descriptorRef>
+          </descriptorRefs>
+          <!--Gestión de las propiedades del JAR-->
+          <archive>
+            <!--META-INF/MANIFEST.MF-->
+            <manifest>
+              <!--Busca el métod public static void main(String[] args) de la clase especificada-->
+              <mainClass>com.app.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <!--Ejecuciones, ¿cuándo debe aplicarse este plugin?-->
+        <executions>
+          <execution>
+            <!--Nombre interno para identificar esta tarea-->
+            <id>make-assembly</id>
+            <!--Cuando yo escriba el comando mvn <phase> -->
+            <phase>package</phase>
+            <!--Acciones específicas-->
+            <goals>
+              <!--Englóbalo todo en un mismo archivo-->
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
