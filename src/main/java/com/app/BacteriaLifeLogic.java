@@ -3,6 +3,18 @@ package com.app;
 import java.util.Arrays;
 import java.util.Random;
 
+/**Data Flow:
+ * @Matriz bidimensional:
+ *  @1. generateInitialGen() = Matriz1
+ *  @2. Bucle evolutivo:
+ *      2.1 Matriz1 -> generateNewGen() -> Matriz2
+ *      2.2 Matriz2 recorre celda por celda Matriz1
+ *      2.3 Por cada celda -> checkNeighbours() sobre M1
+ *      2.4 If/else -> resultado = M2
+ *  @3. Verificación: checkStableGen() compara A Y B:
+ *      3.1 Si son iguales, el flujo se detiene.
+ *      3.2 Si no, B se convierte en la nueva A y el ciclo se repite
+ *  **/
 public class BacteriaLifeLogic {
     private final int DIMENSION;
     private int round = 0;
