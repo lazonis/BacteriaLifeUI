@@ -6,14 +6,15 @@ import java.util.Arrays;
 
 public class BacteriaLifeUI {
     // Constants
-    private final BacteriaLifeLogic LOGIC;
+    protected final BacteriaLifeLogic LOGIC;
     private static final int BACTERIA_SIZE = 10;
     private static final Color BG_COLOR = new Color(141, 69, 220);
     private static final int DIMENSION = 30;
-    private final JPanel genPanel;
+    protected final JPanel genPanel;
+    protected final JFrame mainFrame;
 
     // Current active gen
-    private int[][] bacteriaGen;
+    protected int[][] bacteriaGen;
 
     // Circle class for rounded objects (bacteria)
     private static class Circle extends JButton {
@@ -156,7 +157,7 @@ public class BacteriaLifeUI {
         this.bacteriaGen = LOGIC.generateInitialGen();
 
         // Main frame
-        JFrame mainFrame = new JFrame("BacteriaLife");
+        mainFrame = new JFrame("BacteriaLife");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLayout(new BorderLayout());
 
