@@ -16,7 +16,7 @@ import java.util.Random;
  *      3.2 Si no, B se convierte en la nueva A y el ciclo se repite
  *  **/
 public class BacteriaLifeLogic {
-    private final int DIMENSION;
+    private int DIMENSION;
     private int round = 0;
     private static final int MAX_ROUNDS = 300;
     private static final int[][] DIRECTIONS = {
@@ -29,6 +29,8 @@ public class BacteriaLifeLogic {
     public BacteriaLifeLogic(int dimension) {
         this.DIMENSION = dimension;
     }
+
+    public BacteriaLifeLogic(){}
 
     // Generate initial generation, random positions
     public int[][] generateInitialGen() {
@@ -71,14 +73,6 @@ public class BacteriaLifeLogic {
                 }
             }
         }
-
-        // In BacteriaLifeLogic
-        if (round > MAX_ROUNDS) {
-            System.out.println("Can't get a stable gen.");
-            return gen;
-        }
-
-
         return newGen;
 
     }
