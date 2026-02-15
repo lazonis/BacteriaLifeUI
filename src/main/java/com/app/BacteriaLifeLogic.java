@@ -79,7 +79,7 @@ public class BacteriaLifeLogic {
 
 
     // Count the neighbours
-    public static int checkNeighbours(int[][] gen, int row, int col) {
+    protected int checkNeighbours(int[][] gen, int row, int col) {
         int neighbours = 0;
         // 8 possible positions of neighbours
         for (int[] d : DIRECTIONS) {
@@ -95,7 +95,7 @@ public class BacteriaLifeLogic {
     }
 
     // Makes sure coordinates are within bounds
-    public static boolean inBounds(int[][] gen, int row, int col) {
+    protected static boolean inBounds(int[][] gen, int row, int col) {
         return row >= 0 && row < gen.length &&
                 col >= 0 && col < gen[0].length;
     }
@@ -105,7 +105,7 @@ public class BacteriaLifeLogic {
     }
 
     // Check if the gen hasn't changed (if it's stable)
-    public static boolean checkStableGen(int[][] oldGen, int[][] newGen) {
+    protected boolean checkStableGen(int[][] oldGen, int[][] newGen) {
         return Arrays.deepEquals(oldGen, newGen);
     }
 }

@@ -6,18 +6,19 @@ import java.util.Arrays;
 
 public class BacteriaLifeUI {
     // Constants
-    protected final BacteriaLifeLogic LOGIC;
+    protected BacteriaLifeLogic LOGIC;
     private static final int BACTERIA_SIZE = 10;
     private static final Color BG_COLOR = new Color(141, 69, 220);
     private static final int DIMENSION = 30;
-    protected final JPanel genPanel;
-    protected final JFrame mainFrame;
+    protected JPanel genPanel;
+    protected JFrame mainFrame;
+    protected JButton startButton;
 
     // Current active gen
     protected int[][] bacteriaGen;
 
     // Circle class for rounded objects (bacteria)
-    private static class Circle extends JButton {
+    protected static class Circle extends JButton {
         private Color color;
         private final int diameter;
 
@@ -35,7 +36,7 @@ public class BacteriaLifeUI {
         protected void paintComponent(Graphics g) {
             g.setColor(color);
             g.fillOval(0, 0, diameter, diameter); // use diameter instead of getWidth()/getHeight() if you want consistent circles
-            super.paintComponent(g);
+            //super.paintComponent(g);
         }
 
         @Override
@@ -75,7 +76,7 @@ public class BacteriaLifeUI {
     }
 
     // Refresh the grid after generating a new round
-    private void refreshGenPanel() {
+    protected void refreshGenPanel() {
         genPanel.removeAll();
         genPanel.setLayout(new GridLayout(DIMENSION, DIMENSION, 3, 3));
 
@@ -98,7 +99,7 @@ public class BacteriaLifeUI {
         JLabel roundLabel = new JLabel();
         roundLabel.setText("Round: " + LOGIC.getRound());
 
-        JButton startButton = getStartButton(roundLabel);
+         startButton = getStartButton(roundLabel);
 
         startButton.setPreferredSize(new Dimension(70, 50));
         startButton.setBackground(Color.WHITE);
@@ -142,7 +143,7 @@ public class BacteriaLifeUI {
     }
 
     // To copy the gen
-    private int[][] deepCopy(int[][] bacteriaGen) {
+    protected int[][] deepCopy(int[][] bacteriaGen) {
         if (bacteriaGen == null) return null;
         int[][] copy = new int[bacteriaGen.length][];
         for (int i = 0; i < bacteriaGen.length; i++) {
@@ -171,4 +172,6 @@ public class BacteriaLifeUI {
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
+
+    public BacteriaLifeUI(){}
 }

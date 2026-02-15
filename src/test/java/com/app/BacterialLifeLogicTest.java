@@ -73,7 +73,7 @@ public class BacterialLifeLogicTest {
                 {1,1,1}
         };
         //When
-        int neighbours = BacteriaLifeLogic.checkNeighbours(table,1,1);
+        int neighbours = logic.checkNeighbours(table,1,1);
         //Then
         assertEquals(8,neighbours);
     }
@@ -171,7 +171,7 @@ public class BacterialLifeLogicTest {
                 {0, 1}
         };
         //When
-        boolean stableGen = BacteriaLifeLogic.checkStableGen(gen1,gen2);
+        boolean stableGen = logic.checkStableGen(gen1,gen2);
         //Then
         assertTrue(stableGen);
     }
@@ -188,7 +188,7 @@ public class BacterialLifeLogicTest {
                 {0, 1}
         };
         //When
-        boolean stableGen = BacteriaLifeLogic.checkStableGen(gen1,gen2);
+        boolean stableGen = logic.checkStableGen(gen1,gen2);
         //Then
         assertFalse(stableGen);
     }
